@@ -1,10 +1,8 @@
-// ignore_for_file: avoid_print
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
-// import 'package:calendar_appbar/calendar_appbar.dart';
 
 class DemoApp extends StatefulWidget {
   const DemoApp({Key? key}) : super(key: key);
@@ -14,10 +12,10 @@ class DemoApp extends StatefulWidget {
   _DemoAppState createState() => _DemoAppState();
 }
 
-// late String selectedDay = 'August';
+late String selectedDay = 'August';
 @override
 void initState() {
-  // DateTime(2022);
+  DateTime(2022);
   initState();
 }
 
@@ -70,10 +68,6 @@ class _DemoAppState extends State<DemoApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Calendar'),
-          centerTitle: true,
-        ),
         body: SafeArea(
           child: Calendar(
             startOnMonday: true,

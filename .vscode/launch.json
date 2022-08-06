@@ -4,19 +4,22 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
+    
+        
         {
-            "name": "newtasklist",
+            "name": "ToDoList",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "newtasklist (profile mode)",
+            "name": "ToDoList (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "newtasklist (release mode)",
+            "name": "ToDoList (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

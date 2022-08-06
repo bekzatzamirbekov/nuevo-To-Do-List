@@ -13,10 +13,14 @@ class TutorialHome extends StatelessWidget {
     // Scaffold является разметкой для основных компонентов Material.
     return Scaffold(
       appBar: AppBar(
-        leading: const IconButton(
-          icon: Icon(Icons.menu),
-          tooltip: 'Navigation menu',
-          onPressed: null,
+        leading: IconButton(
+          icon: const Icon(Icons.swipe_left_sharp),
+          tooltip: 'Back',
+          onPressed: () {
+            Navigator.pop(context);
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/todo', (route) => false);
+          },
         ),
         title: const Text('Example title'),
         actions: const <Widget>[
