@@ -1,6 +1,6 @@
 # newtasklist
 
-A new Flutter project.
+To Do List application.
 
 ## Getting Started
 
