@@ -3,7 +3,7 @@ import 'dart:core';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:last_auth/model/user_model.dart';
 import 'package:last_auth/pages/calendar.dart';
 import 'package:last_auth/pages/task.dart';
@@ -23,15 +23,6 @@ class Home extends StatefulWidget {
 }
 
 mixin PersistentTabController {}
-void initFirebase() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-}
-
-void initState() {
-  initState();
-  initFirebase();
-}
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   User? user = FirebaseAuth.instance.currentUser;
@@ -69,128 +60,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       super.dispose();
       tabController.dispose();
     }
-
-/*
-    @override
-    Widget build(BuildContext context) => Scaffold(
-          // backgroundColor: Colors.black,
-          appBar: AppBar(
-              title: const Text('Make tasks and lists',
-                  style: TextStyle(fontSize: 20)),
-              centerTitle: true,
-              actions: const []),
-          drawer: Drawer(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 0.0),
-              child: Container(
-                color: Colors.white10,
-                child: ListView(
-                  children: [
-                    DrawerHeader(
-                        child: Center(
-                      child: Text(
-                        '${loggedInUser.email}',
-                        style:
-                            const TextStyle(fontSize: 28, color: Colors.black),
-                      ),
-                    )),
-                    ListTile(
-                      iconColor: Colors.black,
-                      leading: const Icon(
-                        Icons.home,
-                      ),
-                      title: const Text('Main Screen',
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const MainScreen())),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                    ),
-                    ListTile(
-                      iconColor: Colors.black,
-                      leading: const Icon(Icons.edit_calendar),
-                      title: const Text('Calendar',
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const DemoApp())),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                    ),
-                    ListTile(
-                      iconColor: Colors.black,
-                      leading: const Icon(Icons.favorite),
-                      title: const Text('Favourites',
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                      onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => MyTabs())),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                    ),
-                    ListTile(
-                      iconColor: Colors.black,
-                      leading: const Icon(Icons.support_agent_outlined),
-                      title: const Text('Support',
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const MainScreen())),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                    ),
-                    ListTile(
-                        iconColor: Colors.black,
-                        leading: const Icon(Icons.logout),
-                        title: const Text('Log out',
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.black)),
-                        onTap: () =>
-                            Navigator.of(context).pushAndRemoveUntil<void>(
-                              MaterialPageRoute<void>(
-                                  builder: (BuildContext context) =>
-                                      const LoginScreen()),
-                              ModalRoute.withName('/'),
-                            )),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          bottomNavigationBar: Container(
-            child: TabBar(
-              controller: tabController,
-              tabs: <Tab>[
-                Tab(icon: Icon(FontAwesomeIcons.angleUp), text: 'Feed'),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.tags),
-                  text: 'Tasks',
-                ),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.calendar),
-                  text: 'Calendar',
-                ),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.slack),
-                  text: 'Settings',
-                )
-              ],
-            ),
-          ),
-          // backgroundColor: Colors.grey[900],
-          body: TabBarView(
-            controller: tabController,
-            children: [
-              Feed(),
-              Calendar(),
-            ],
-          ),
-        );
-  
-  
-  }
-*/
     Future<void> logout(BuildContext context) async {
       await FirebaseAuth.instance.signOut();
       Navigator.of(context).pushReplacement(
@@ -231,13 +100,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  // DrawerHeader(
-                  //     child: Center(
-                  //         // child: Text(
-                  //         //   '${loggedInUser.firstName}',
-                  //         //   style: const TextStyle(fontSize: 28, color: Colors.black),
-                  //         // ),
-                  //         )),
                   ListTile(
                     iconColor: Colors.black,
                     leading: const Icon(
@@ -364,163 +226,5 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             )),
         backgroundColor: Colors.white,
         body: screens[index],
-
-        // TabBarView(
-        //   controller: tabController,
-        //   children: [
-        //     Feed(),
-        //     Calendar(),
-        //   ],
-        // ),
       );
 }
-/*
-@override
-void initState() {
-  super.initState();
-  tabController = TabController(length: 4, vsync: this);
-
-  FirebaseFirestore.instance
-      .collection('users')
-      .doc(user!.uid)
-      .get()
-      .then((value) {
-    this.loggedInUser = UserModel.fromMap(value.data());
-    setState(() {});
-  });
-
-  // dispose function
-  @override
-  void dispose() {
-    super.dispose();
-    tabController.dispose();
-  }
-/*
-    @override
-    Widget build(BuildContext context) => Scaffold(
-          // backgroundColor: Colors.black,
-          appBar: AppBar(
-              title: const Text('Make tasks and lists',
-                  style: TextStyle(fontSize: 20)),
-              centerTitle: true,
-              actions: const []),
-          drawer: Drawer(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 0.0),
-              child: Container(
-                color: Colors.white10,
-                child: ListView(
-                  children: [
-                    DrawerHeader(
-                        child: Center(
-                      child: Text(
-                        '${loggedInUser.email}',
-                        style:
-                            const TextStyle(fontSize: 28, color: Colors.black),
-                      ),
-                    )),
-                    ListTile(
-                      iconColor: Colors.black,
-                      leading: const Icon(
-                        Icons.home,
-                      ),
-                      title: const Text('Main Screen',
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const MainScreen())),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                    ),
-                    ListTile(
-                      iconColor: Colors.black,
-                      leading: const Icon(Icons.edit_calendar),
-                      title: const Text('Calendar',
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const DemoApp())),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                    ),
-                    ListTile(
-                      iconColor: Colors.black,
-                      leading: const Icon(Icons.favorite),
-                      title: const Text('Favourites',
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                      onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => MyTabs())),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                    ),
-                    ListTile(
-                      iconColor: Colors.black,
-                      leading: const Icon(Icons.support_agent_outlined),
-                      title: const Text('Support',
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const MainScreen())),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                    ),
-                    ListTile(
-                        iconColor: Colors.black,
-                        leading: const Icon(Icons.logout),
-                        title: const Text('Log out',
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.black)),
-                        onTap: () =>
-                            Navigator.of(context).pushAndRemoveUntil<void>(
-                              MaterialPageRoute<void>(
-                                  builder: (BuildContext context) =>
-                                      const LoginScreen()),
-                              ModalRoute.withName('/'),
-                            )),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          bottomNavigationBar: Container(
-            child: TabBar(
-              controller: tabController,
-              tabs: <Tab>[
-                Tab(icon: Icon(FontAwesomeIcons.angleUp), text: 'Feed'),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.tags),
-                  text: 'Tasks',
-                ),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.calendar),
-                  text: 'Calendar',
-                ),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.slack),
-                  text: 'Settings',
-                )
-              ],
-            ),
-          ),
-          // backgroundColor: Colors.grey[900],
-          body: TabBarView(
-            controller: tabController,
-            children: [
-              Feed(),
-              Calendar(),
-            ],
-          ),
-        );
-  
-  
-  }
-*/
-
-  Future<void> logout(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: ((context) => const LoginScreen())));
-  }
-}
-*/

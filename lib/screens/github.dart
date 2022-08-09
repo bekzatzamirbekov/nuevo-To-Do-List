@@ -9,13 +9,13 @@ class GithubScreen extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: Colors.white,
         title: Text(
-          "Github",
+          "Eletcom",
           style: TextStyle(color: Colors.black),
         ),
       ),
       body: SafeArea(
         child: WebView(
-          initialUrl: "http://eletcom.kg/login",
+          initialUrl: "https://admin-eletcom.vercel.app/",
           javascriptMode: JavascriptMode.unrestricted,
         ),
       ),

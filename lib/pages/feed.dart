@@ -11,26 +11,11 @@ class Feed extends StatefulWidget {
 
 late String userToDo;
 List todoList = [];
-void initFirebase() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-}
-
-void initState() {
-  initState();
-  initFirebase();
-  todoList.add('value');
-}
 
 class _FeedState extends State<Feed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //     // title:
-      //     // const Text('Organize your day', style: TextStyle(fontSize: 20)),
-      //     // centerTitle: true,
-      //     actions: const []),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance.collection('Items').snapshots(),
           builder:
@@ -93,7 +78,7 @@ class _FeedState extends State<Feed> {
                       ElevatedButton(
                           onPressed: () {
                             FirebaseFirestore.instance
-                                .collection('Items')
+                                .collection('Items', )
                                 .add({'item': userToDo});
                             Firebase.initializeApp();
                             Navigator.of(context).pop();
