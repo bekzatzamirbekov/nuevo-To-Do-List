@@ -19,6 +19,7 @@ class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
   //editing controller
   final firstNameEditingController = TextEditingController();
+  final itemEditingController = TextEditingController();
   final secondNameEditingController = TextEditingController();
   final emailNameEditingController = TextEditingController();
   final passwordNameEditingController = TextEditingController();
@@ -27,8 +28,18 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     //firstname field,
-    final firstNameField = TextFormField(
+    final itemField = TextFormField(
       autofocus: false,
+      controller: itemEditingController,
+      keyboardType: TextInputType.name,
+      onSaved: (value) {
+        itemEditingController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+    );
+
+    final firstNameField = TextFormField(
+      autofocus: true,
       controller: firstNameEditingController,
       keyboardType: TextInputType.name,
       validator: (value) {

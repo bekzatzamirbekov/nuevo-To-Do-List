@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import '../model/user_model.dart';
 
 class Feed extends StatefulWidget {
   Feed({Key? key}) : super(key: key);
@@ -9,15 +11,24 @@ class Feed extends StatefulWidget {
   State<Feed> createState() => _FeedState();
 }
 
+final itemEditingController = TextEditingController();
+
 late String userToDo;
 List todoList = [];
 
 class _FeedState extends State<Feed> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+  // ------------------------------------------
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('Items').snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection('Items')
+              .where('uid', isEqualTo: user?.uid)
+              .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
@@ -77,9 +88,11 @@ class _FeedState extends State<Feed> {
                     actions: [
                       ElevatedButton(
                           onPressed: () {
-                            FirebaseFirestore.instance
-                                .collection('Items', )
-                                .add({'item': userToDo});
+                            FirebaseFirestore.instance.collection('Items').add({
+                              'item': userToDo,
+                              'uid': user?.uid,
+                              'email': user?.email
+                            });
                             Firebase.initializeApp();
                             Navigator.of(context).pop();
                           },

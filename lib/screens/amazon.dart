@@ -9,13 +9,13 @@ class AmazonScreen extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: Colors.white,
         title: Text(
-          "Amazon",
+          "Flutter",
           style: TextStyle(color: Colors.black),
         ),
       ),
       body: SafeArea(
         child: WebView(
-          initialUrl: "https://amazon.in",
+          initialUrl: "https://flutter.dev",
           javascriptMode: JavascriptMode.unrestricted,
         ),
       ),

@@ -21,13 +21,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   // This widget is the root of your application.
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: Locale('en', ''),
       title: 'Email and Password Login',
       themeMode: ThemeMode.dark,
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
+      theme: ThemeData(primarySwatch: Colors.lightBlue),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {

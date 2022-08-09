@@ -10,16 +10,16 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[900],
+        // backgroundColor: Colors.grey[900],
         body: Container(
-          child: Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/todo', (route) => true);
-                },
-                child: const Text('Open all my task lists')),
-          ),
-        ));
+      child: Center(
+        child: ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/todo', (route) => true);
+            },
+            child: const Text('Open all my task lists')),
+      ),
+    ));
   }
 }

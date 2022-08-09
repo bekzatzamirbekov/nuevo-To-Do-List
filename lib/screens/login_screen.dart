@@ -9,7 +9,6 @@ import 'package:last_auth/screens/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -34,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {});
       });
     }
-
     //email field
     final emailField = TextFormField(
       autofocus: false,
