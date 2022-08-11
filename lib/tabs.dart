@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:last_auth/screens/amazon.dart';
-import 'package:last_auth/screens/github.dart';
-import 'package:last_auth/screens/google.dart';
-import 'package:last_auth/screens/youtube.dart';
+import 'package:last_auth/web_pages/amazon.dart';
+import 'package:last_auth/web_pages/github.dart';
+import 'package:last_auth/web_pages/google.dart';
+import 'package:last_auth/web_pages/youtube.dart';
 
 class MyTabs extends StatefulWidget {
   @override

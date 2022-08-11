@@ -67,6 +67,7 @@ dependencies:
   url_launcher: ^6.1.5
   webview_flutter: ^3.0.4
   video_player: ^2.4.6
+  flutter_zoom_drawer: ^3.0.3
 
 dev_dependencies:
   flutter_test:

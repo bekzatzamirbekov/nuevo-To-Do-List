@@ -141,7 +141,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   leading: const Icon(
                     Icons.favorite,
                   ),
-                  title: const Text('Favourites',
+                  title: const Text('Web pages',
                       style: TextStyle(fontSize: 20, color: Colors.black)),
                   onTap: () => Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) => MyTabs())),
@@ -235,31 +235,5 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             ],
           )),
       backgroundColor: Colors.white,
-      body: screens[index]
-      // PageView(
-      //   controller: controller,
-      //   onPageChanged: (index) {
-      //     screens[index];
-      //   },
-      //   children: [
-      //     Container(
-      //       child: Feed(),
-      //     ),
-      //     Container(
-      //       child: Image(
-      //         image: AssetImage('assets/back.png'),
-      //         fit: BoxFit.cover,
-      //       ),
-      //     ),
-      //     Container(
-      //       child: Liked(),
-      //     ),
-      //     Container(
-      //       child: MainScreen(),
-      //     ),
-      //     screens[index]
-      //   ],
-      // ),
-      // screens[index],
-      );
+      body: screens[index]);
 }

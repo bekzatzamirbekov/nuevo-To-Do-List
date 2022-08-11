@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 10,
               ),
-              Text('${loggedInUser.firstName} ${loggedInUser.secondName}',
+              Text('${user?.displayName}',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 25,

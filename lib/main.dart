@@ -7,14 +7,13 @@ import 'package:last_auth/pages/home.dart';
 import 'screens/login_screen.dart';
 
 // import 'auth_service.dart';
-void main() async {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(); //initilization of Firebase app
+  await Firebase.initializeApp(); //initilization of Firebase app
   // here, Firebase.initilizeApp() is Future method, so you need to add await before.
   //run time error: Unhandled Exception: [core/no-app]
   //No Firebase App '[DEFAULT]' has been created - call Firebase.initializeApp()
   // final _auth = FirebaseAuth.instance;
-
   runApp(const MyApp());
 }
 
@@ -28,7 +27,8 @@ class MyApp extends StatelessWidget {
       locale: Locale('en', ''),
       title: 'Email and Password Login',
       themeMode: ThemeMode.dark,
-      theme: ThemeData(primarySwatch: Colors.lightBlue),
+      theme: ThemeData(primarySwatch: Colors.lightBlue,
+      visualDensity: VisualDensity.adaptivePlatformDensity,),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
