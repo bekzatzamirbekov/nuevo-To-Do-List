@@ -8,7 +8,7 @@ import 'package:last_auth/model/user_model.dart';
 import 'package:last_auth/pages/calendar.dart';
 import 'package:last_auth/pages/important.dart';
 import 'package:last_auth/pages/task.dart';
-import 'package:last_auth/screens/login_screen.dart';
+import 'package:last_auth/authentication/login_screen.dart';
 import 'package:last_auth/tabs.dart';
 import 'feed.dart';
 import 'mainscreen.dart';

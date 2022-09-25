@@ -3,11 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:last_auth/pages/home.dart';
+import 'package:last_auth/services/authservice.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
-import 'screens/login_screen.dart';
 
-// import 'auth_service.dart';
-void main() async{
+// import 'auth_service.dart'; Bekzat krasavchik
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(); //initilization of Firebase app
   // here, Firebase.initilizeApp() is Future method, so you need to add await before.
@@ -27,12 +27,14 @@ class MyApp extends StatelessWidget {
       locale: Locale('en', ''),
       title: 'Email and Password Login',
       themeMode: ThemeMode.dark,
-      theme: ThemeData(primarySwatch: Colors.lightBlue,
-      visualDensity: VisualDensity.adaptivePlatformDensity,),
+      theme: ThemeData(
+        primarySwatch: Colors.lightBlue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const LoginScreen(),
+        '/': (context) => AuthService().handleAuth(),
         '/todo': (context) => const Home(),
         '/calen': (context) => Calendar()
       },
